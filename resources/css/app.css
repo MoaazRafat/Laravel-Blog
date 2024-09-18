@@ -1,0 +1,20 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+html,
+body {
+    font-family: "SUSE", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.hero-bg-image {
+    background: url("https://images.unsplash.com/photo-1484950763426-56b5bf172dbb")
+        no-repeat center center / cover;
+    background-attachment: fixed;
+    height: 600px;
+}
