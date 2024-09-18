@@ -40,12 +40,12 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'description' => 'required',
-        // 'image' => 'required|memes:jpg,png,jpeg|max:5048',
-        // ]);
-        // $slug = strtolower(str_replace(" ", "-", $request->title));
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|memes:jpg,png,jpeg|max:5048',
+        ]);
+        $slug = strtolower(str_replace(" ", "-", $request->title));
         $slug = Str::slug($request->title, '-');
         $newImageName = uniqid() . '-' . $slug . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $newImageName);
@@ -93,6 +93,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, $slug)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|memes:jpg,png,jpeg|max:5048',
+        ]);
         $slug = Str::slug($request->title, '-');
         $newImageName = uniqid() . '-' . $slug . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $newImageName);
